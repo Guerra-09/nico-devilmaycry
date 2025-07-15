@@ -219,7 +219,6 @@ body {
 .cardWeapon {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 2rem;
   background: rgba(0, 0, 0, 0.5);
   padding: 2rem;
@@ -228,32 +227,41 @@ body {
   box-shadow: 0 0 12px rgba(255, 0, 50, 0.1);
   position: relative;
   flex-wrap: wrap;
-  flex-direction: row; /* ← asegúrate de que esto esté así */
+  flex-direction: row;
 }
 
 .cardWeapon h2 {
   font-family: 'DMC5Font', sans-serif;
-  font-size: 3rem;
+  font-size: 5rem;
   color: white;
   flex-basis: 100%;
   margin-bottom: 1rem;
 }
 
-/* TEXTO */
 .cardWeapon p {
   color: white;
   font-family: 'LuciferSans', sans-serif;
   line-height: 1.6;
-  text-align: justify;
+  text-align: center;
   flex: 2;
   min-width: 280px;
+  background-color: rgba(144, 26, 26, 0.296);
+  padding: 20px;
 }
 
-/* VIDEO */
 .cardWeapon video {
+  display: flex;
   flex: 1;
-  max-width: 400px;
-  min-width: 250px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  align-items: center;
+  max-width: 700px;
+  min-width: 600px;
   box-shadow: 0 0 10px rgba(255, 0, 50, 0.2);
+}
+
+@media (max-width: 768px) {
+  .cardWeapon video {
+    max-width: 100%;
+    min-width: unset;
+    width: 100%;
+  }
 }
