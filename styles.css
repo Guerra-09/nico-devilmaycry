@@ -226,9 +226,9 @@ body.v-bg {
   background: linear-gradient(to bottom, rgba(40, 60, 40, 0.5), rgba(0, 0, 0, 0.6));
 }
 
+
+
 .weaponsContainer {
-  display: flex;
-  flex-direction: column;
   gap: 4rem;
   margin: 4rem auto;
   width: 90%;
@@ -236,29 +236,35 @@ body.v-bg {
 }
 
 .cardWeapon {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-areas:
+    "title text"
+    "video text";
+  column-gap: 2rem;
   background: rgba(0, 0, 0, 0.5);
   padding: 2rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 12px rgba(255, 0, 50, 0.1);
   position: relative;
-  flex-wrap: wrap;
-  flex-direction: row;
+  align-items: start;
 }
 
 .cardWeapon h2 {
+  grid-area: title;
   font-family: 'DMC5Font', sans-serif;
   font-size: 5rem;
   color: white;
-  flex-basis: 100%;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: linear-gradient(to right, rgb(0, 0, 0) 50%, rgba(30, 30, 30, 0) 100%);
+  width: 100%;
+  height: 100px;
 }
 
 .cardWeapon p {
   color: white;
+  grid-area: text;
   font-family: 'LuciferSans', sans-serif;
   line-height: 1.6;
   text-align: center;
@@ -269,20 +275,53 @@ body.v-bg {
 }
 
 .cardWeapon video {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  max-width: 700px;
-  min-width: 600px;
+  grid-area: video;
+  width: 100%;
   box-shadow: 0 0 10px rgba(255, 0, 50, 0.2);
 }
 
-@media (max-width: 768px) {
-  .cardWeapon video {
-    max-width: 100%;
-    min-width: unset;
-    width: 100%;
+@media (max-width: 1024px) {
+  .cardWeapon {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "video"
+      "text";
+    row-gap: 1.5rem;
   }
+  
+  .cardWeapon h2 {
+    font-size: 4rem;
+    height: auto;
+    background: linear-gradient(to right, rgb(0, 0, 0) 70%, rgba(30, 30, 30, 0) 100%);
+  }
+  
+  .cardWeapon p {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+ .weaponsContainer {
+    gap: 3rem;
+    margin: 3rem auto;
+    width: 95%;
+  }
+  
+  .cardWeapon {
+    padding: 1.5rem;
+  }
+  
+  .cardWeapon h2 {
+    font-size: 3rem;
+    text-align: center;
+    background: rgb(0, 0, 0);
+  }
+  
+  .cardWeapon p {
+    padding: 15px;
+  }
+
   .navBar {
     font-size: 1.2rem;
   }
@@ -316,5 +355,20 @@ body.v-bg {
 @media (max-width: 992px) {
   .logo {
     max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWeapon h2 {
+    font-size: 2.5rem;
+  }
+  
+  .cardWeapon {
+    padding: 1rem;
+  }
+  
+  .weaponsContainer {
+    gap: 2rem;
+    margin: 2rem auto;
   }
 }
